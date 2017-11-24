@@ -22,10 +22,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-//    if (kDevice_Is_iPhoneX) {
-//        YUBaseTabBar *baseTabBar = [[YUBaseTabBar alloc] init];
-//        [self setValue:baseTabBar forKey:@"tabBar"];
-//    }
+    if (kDevice_Is_iPhoneX) {
+        YUBaseTabBar *baseTabBar = [[YUBaseTabBar alloc] init];
+        [self setValue:baseTabBar forKey:@"tabBar"];
+    }
     self.tabBar.tintColor = [UIColor redColor];
     
     
