@@ -22,10 +22,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    if (kDevice_Is_iPhoneX) {
-        YUBaseTabBar *baseTabBar = [[YUBaseTabBar alloc] init];
-        [self setValue:baseTabBar forKey:@"tabBar"];
-    }
+//    if (kDevice_Is_iPhoneX) {
+//        YUBaseTabBar *baseTabBar = [[YUBaseTabBar alloc] init];
+//        [self setValue:baseTabBar forKey:@"tabBar"];
+//    }
     self.tabBar.tintColor = [UIColor redColor];
     
     
@@ -38,9 +38,14 @@
  */
 - (void)setupAllChildViewControllers
 {
+    NSArray *titles = @[@"首页", @"论坛", @"发现", @"我的"];
+    NSArray *imageNames = @[@"tab_news", @"tab_forum", @"tab_selectCar", @"tab_mySpace"];
+    
     for (int i = 0; i < 4; i++) {
+        NSString *imageName = [imageNames[i] stringByAppendingString:@"_normal"];
+        NSString *selectedImageName = [imageNames[i] stringByAppendingString:@"_highlighted"];
         ViewController *homeCtrl = [[ViewController alloc] init];
-        [self setupChildViewController:homeCtrl title:@"测试" imageName:@"tab_selectCar_normal" selectedImageName:@"tab_selectCar_highlighted"];
+        [self setupChildViewController:homeCtrl title:titles[i] imageName:imageName selectedImageName:selectedImageName];
     }
 
 }
@@ -51,7 +56,7 @@
  */
 - (void)setupChildViewController:(UIViewController *)vc title:(NSString *)title imageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName
 {
-    // 设置文字和图片
+    // 设置文字
     vc.title = title;
     vc.tabBarItem.title = title;
     //    vc.tabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0);
